@@ -1,0 +1,503 @@
+$rem-base: 16px;
+@import "mixins";
+@import "type";
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+
+  background: url("/background.jpeg");
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+
+  overflow: hidden;
+
+  font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.app {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+}
+
+.envelope {
+  margin: 0 auto;
+  position: relative;
+
+  height: 67.85714286vw;
+  width: 95vw;
+
+  @media screen and (min-width: 991px) {
+    height: rem-calc(600);
+    width: rem-calc(840);
+  }
+
+  transform: rotateY(180deg);
+
+  perspective: rem-calc(5400);
+  transition: transform 500ms ease-in-out;
+  pointer-events: none;
+
+  transform-style: preserve-3d;
+
+  &-back {
+    backface-visibility: hidden;
+    background: url("/envelope-front-gold.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 67.85714286vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(600);
+      width: rem-calc(840);
+    }
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    z-index: 4;
+  }
+
+  &-front {
+    backface-visibility: hidden;
+    background: url("/envelope-back-gold.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 67.85714286vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(600);
+      width: rem-calc(840);
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  &-flap-shadow {
+    backface-visibility: hidden;
+    background: url("/flap-shadow.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 67.85714286vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(600);
+      width: rem-calc(840);
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 1;
+    transition: transform 1000ms ease-in-out, opacity 1000ms ease-in-out;
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    transform: scaleY(1);
+  }
+
+  &-front-inner {
+    backface-visibility: hidden;
+    background: url("/envelope-back-gold.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 67.85714286vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(600);
+      width: rem-calc(840);
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  &-flap {
+    backface-visibility: hidden;
+    background: url("/envelope-outside-gold.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    height: 59.26190476vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(524);
+      width: rem-calc(840);
+    }
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transform-origin: top center;
+  }
+
+  &-flap-inner {
+    backface-visibility: hidden;
+    background: url("/envelope-gold.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    height: 59.26190476vw;
+    width: 95vw;
+
+    @media screen and (min-width: 991px) {
+      height: rem-calc(524);
+      width: rem-calc(840);
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    transition: transform 1000ms ease-in-out, opacity 500ms ease-in-out;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(180deg);
+    transform-origin: top center;
+  }
+
+  &-content {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 95%;
+
+    max-height: calc(67.85714286vw - #{rem-calc(40)});
+
+    @media screen and (min-width: 991px) {
+      width: 80%;
+      max-height: rem-calc(520);
+    }
+
+    height: auto;
+    //   background: #fff;
+    z-index: 2;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) translateY(#{rem-calc(40)});
+
+    transition: transform 1000ms ease-in-out, max-height 1000ms ease-in-out;
+
+    //   background: url('/letter.svg');
+    //   background-size: 100% auto;
+    overflow: hidden;
+    filter: drop-shadow(#{rem-calc(0 0 20)} rgba(0, 0, 0, 0.4));
+
+    img,
+    > div {
+      margin-bottom: rem-calc(30);
+    }
+
+    .letter {
+      background: url("/letter_blank.png");
+      height: auto;
+      width: 100%;
+      border: rem-calc(15) solid #e4c8b0;
+      background-size: cover;
+      box-sizing: border-box;
+      padding: rem-calc(50);
+
+
+      @media screen and (min-width: 991px) {
+        border: rem-calc(25) solid #e4c8b0;
+      }
+      &-title {
+        font-family: "Acme", sans-serif;
+        font-size: rem-calc(40);
+        text-align: center;
+        color: #813b0a;
+      }
+
+      &-description {
+        font-size: rem-calc(18);
+        text-align: center;
+        color: #813b0a;
+
+        br {
+          display: none;
+
+          @media screen and (min-width: 991px) {
+            display: inline-block;
+          }
+        }
+      }
+
+      .rsvp {
+        &-buttons {
+          display: flex;
+          justify-content: space-evenly;
+          margin-top: rem-calc(16);
+        }
+
+        &-button {
+          font-size: rem-calc(24);
+          text-align: center;
+          color: #813b0a;
+          cursor: pointer;
+          opacity: 0.5;
+          transition: opacity 500ms ease-in-out;
+          display: block;
+
+          &.selected {
+            opacity: 1;
+          }
+
+          span {
+            font-size: rem-calc(14);
+          }
+        }
+      }
+    }
+  }
+
+  &.flip {
+    transform: rotateY(0deg) translateY(0%);
+  }
+
+  &.open {
+    transform: rotateY(0deg) translateY(20%);
+
+    .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-flap-shadow {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+
+    .envelope-flap-inner {
+      transform: rotateX(180deg) rotateY(180deg);
+    }
+  }
+
+  &.exit {
+    pointer-events: all;
+    .envelope {
+      &-content {
+        transition-duration: 500ms;
+        max-height: none;
+        transform: translateX(-50%) translateY(#{rem-calc(-200)});
+
+        @media screen and (min-width: 991px) {
+          transform: translateX(-50%) translateY(#{rem-calc(-100)});
+        }
+      }
+
+      &-flap {
+        transition-duration: 500ms;
+        transform: rotateX(180deg) translateY(#{rem-calc(-800)});
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &-flap-inner {
+        transition-duration: 500ms;
+        transform: rotateX(180deg) rotateY(180deg) translateY(#{rem-calc(-800)});
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &-front {
+        transition-duration: 500ms;
+        transform: translateY(#{rem-calc(800)});
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &-front-inner {
+        transition-duration: 500ms;
+        transform: translateY(#{rem-calc(800)});
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &-back {
+        transition-duration: 500ms;
+        transform: rotateY(180deg) translateY(#{rem-calc(800)});
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.btn {
+  font-size: rem-calc(16);
+  text-align: center;
+  padding: rem-calc(8 20);
+  background: #813b0a;
+  color: #fff;
+  display: block;
+  border: 0;
+  border-radius: rem-calc(4);
+  cursor: pointer;
+}
+
+[gift-registry] {
+  .gifts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem-calc(16);
+    margin-top: rem-calc(50);
+    position: relative;
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 991px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .gift {
+    &-item {
+      perspective: rem-calc(1000);
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform: translateZ(0);
+
+      .gift-card {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        filter: drop-shadow(#{rem-calc(0 0 5)} rgba(0, 0, 0, 0.05));
+        transition: transform 200ms ease-in-out;
+        position: relative;
+        transform: translateZ(0);
+        transform-style: preserve-3d;
+        transform-origin: center;
+        padding-bottom: 100%;
+
+        border-radius: rem-calc(20);
+        overflow: hidden;
+
+        top: 0;
+        left: 0;
+
+        &:hover {
+          transform: translateZ(0) scale(1.05);
+        }
+      }
+    }
+
+    &-front,
+    &-back {
+      backface-visibility: hidden;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: block;
+      transition: transform 500ms ease-in-out;
+      transform: translateZ(0);
+    }
+
+    &-front {
+      background: #e4c8b0;
+      z-index: 1;
+
+      img {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    &-back {
+      background-color: #e4c8b0;
+      transform: translateZ(0) rotateY(180deg);
+      z-index: -1;
+
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-content {
+      font-size: rem-calc(16);
+      text-align: center;
+      color: #813b0a;
+
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+
+      .gift {
+        &-link {
+          font-size: rem-calc(14);
+
+          padding: rem-calc(4 8);
+          background: #8f562a;
+          color: #fff;
+          border-radius: rem-calc(4);
+        }
+
+        &-description {
+          font-size: rem-calc(14);
+          margin-bottom: rem-calc(8);
+
+          br {
+            display: none;
+
+            @media screen and (min-width: 991px) {
+              display: inline-block;
+            }
+          }
+        }
+
+        &-qr {
+          margin: 0 auto;
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+
+    &-item {
+      &.flipped {
+        .gift-front {
+          transform: translateZ(0) rotateY(-180deg);
+        }
+        .gift-back {
+          transform: translateZ(0) rotateY(0deg);
+        }
+      }
+    }
+  }
+}

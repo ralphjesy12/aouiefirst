@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Patrick+Hand&display=swap');
+
+
+html,
+body {
+font-family: "Patrick Hand", cursive;
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+
+  @media screen and (min-width: 400px) {
+    font-size: 13px;
+  }
+
+  @media screen and (min-width: 480px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 640px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 992px) {
+    font-size: 9px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 10.5px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    font-size: 13px;
+  }
+
+  @media screen and (min-width: 1600px) {
+    font-size: 13.95px;
+  }
+
+  @media screen and (min-width: 1900px) {
+    font-size: 16px;
+  }
+}
