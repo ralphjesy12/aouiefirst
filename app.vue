@@ -30,6 +30,23 @@ import GiftRegistry from "./components/GiftRegistry"
 
 useHead(() => {
   return {
+    title: 'You are invited!',
+    meta: [
+      { name: 'title', content: 'You are invited!' },
+      { name: 'description', content: 'Hello, I am John Aouie. We are excited to see you all!' },
+      // Open Graph / Facebook
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://aouie.baby/' },
+      { property: 'og:title', content: 'You are invited!' },
+      { property: 'og:description', content: 'Hello, I am John Aouie. We are excited to see you all!' },
+      { property: 'og:image', content: 'https://aouie.baby/social.png' },
+      // Twitter
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: 'https://aouie.baby/' },
+      { property: 'twitter:title', content: 'You are invited!' },
+      { property: 'twitter:description', content: 'Hello, I am John Aouie. We are excited to see you all!' },
+      { property: 'twitter:image', content: 'https://aouie.baby/social.png' }
+    ],
     link: [
       { rel: 'preload', href: '/background.jpeg', as: 'image' },
       { rel: 'preload', href: '/envelope-front-gold.jpeg', as: 'image' },
