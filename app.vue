@@ -1,7 +1,9 @@
 <template>
   <div class="app" :class="{ show: show }">
     <audio loop id="audio">
-      <source src="/awemaweh.webm" type="audio/mpeg">
+      <source src="/awemaweh.mp3" type="audio/mpeg">
+      <source src="/awemaweh.ogg" type="audio/ogg">
+      <source src="/awemaweh.webm" type="audio/webm">
       Your browser does not support the audio element.
     </audio>
 
