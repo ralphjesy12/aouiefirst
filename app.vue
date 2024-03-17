@@ -12,8 +12,8 @@
       <div class="envelope-flap-inner"></div>
       <div class="envelope-front-inner"></div>
       <div class="envelope-content">
-        <img prefetch src="/letter.svg" width="100%" height="auto">
-        <img prefetch src="/letter_02.svg" width="100%" height="auto">
+        <img prefetch src="/letter.png" width="100%" height="auto">
+        <img prefetch src="/letter_02.png" width="100%" height="auto">
         <div class="letter">
           <RsvpForm></RsvpForm>
         </div>
