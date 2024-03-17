@@ -1,5 +1,10 @@
 <template>
   <div class="app" :class="{ show: show }">
+    <audio loop id="audio">
+      <source src="/awemaweh.webm" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
     <div class="envelope" :class="{ flip: flip, open: open, exit: exit }">
       <div class="envelope-flap"></div>
       <div class="envelope-flap-inner"></div>
@@ -71,6 +76,7 @@ const exit = ref(false)
 const show = ref(false)
 const flipEnvelope = () => {
   flip.value = true;
+  playAudio();
   setTimeout(() => {
     openEnvelope();
   }, 1000);
@@ -80,10 +86,16 @@ const openEnvelope = (event) => {
   open.value = true;
   setTimeout(() => {
     exit.value = true;
+    
     setTimeout(() => {
       document.querySelector('body').style.overflowY = 'auto';
     }, 1000);
   }, 1500);
+}
+
+const playAudio = () => {
+  var audio = document.getElementById("audio");
+  audio.play();
 }
 
 onMounted(() => {
