@@ -52,8 +52,7 @@ body {
 
   perspective: rem-calc(5400);
   transition: transform 500ms ease-in-out;
-  pointer-events: none;
-
+  cursor: pointer;
   transform-style: preserve-3d;
 
   &-back {
@@ -507,4 +506,9 @@ body {
       }
     }
   }
+}
+
+.message{
+  text-align: center;
+  opacity: 0.5;
 }

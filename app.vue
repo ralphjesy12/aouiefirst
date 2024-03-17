@@ -5,7 +5,7 @@
       Your browser does not support the audio element.
     </audio>
 
-    <div class="envelope" :class="{ flip: flip, open: open, exit: exit }">
+    <div class="envelope" :class="{ flip: flip, open: open, exit: exit }" @click="flipEnvelope()">
       <div class="envelope-flap"></div>
       <div class="envelope-flap-inner"></div>
       <div class="envelope-front-inner"></div>
@@ -25,6 +25,8 @@
       <div class="envelope-flap-shadow"></div>
       <div class="envelope-back"></div>
     </div>
+
+    <div class="message" v-if="showMessage">Tap letter to open</div>
   </div>
 </template>
 
@@ -70,12 +72,15 @@ useHead(() => {
 });
 
 
+const showMessage = ref(true);
 const flip = ref(false)
 const open = ref(false)
 const exit = ref(false)
 const show = ref(false)
 const flipEnvelope = () => {
+  if(flip.value) return;
   flip.value = true;
+  showMessage.value = false;
   playAudio();
   setTimeout(() => {
     openEnvelope();
@@ -101,7 +106,6 @@ const playAudio = () => {
 onMounted(() => {
   setTimeout(() => {
     show.value = true;
-    setTimeout(() => { flipEnvelope() }, 1000);
   }, 1000);
 })
 </script>
