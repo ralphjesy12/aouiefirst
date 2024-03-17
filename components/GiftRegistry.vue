@@ -34,7 +34,7 @@ const gifts = ref([{
 }, {
     image: '/friend_003.svg',
     name: 'hygiene',
-    url: 'https://shopee.ph/product/28371224/18953405666?d_id=81a86'
+    url: 'https://shopee.ph/mustelaphilippines?page=0&shopCollection=9759153'
 }, {
     image: '/friend_004.svg',
     name: 'wipes',
