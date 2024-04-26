@@ -17,6 +17,7 @@
         <div class="letter">
           <RsvpForm></RsvpForm>
         </div>
+        <img prefetch src="/letter_nongnang.png" width="100%" height="auto">
         <img prefetch src="/letter_05.png" width="100%" height="auto">
         <div class="letter">
           <GiftRegistry></GiftRegistry>
